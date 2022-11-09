@@ -15,6 +15,23 @@ const todos = async (req, res) => {
     return res.status(200).json({ data: allTodos, page: page_no });
 }
 
+const createTodo = async (req, res) => {
+    const { title, description } = req.body;
+
+    try{
+        await new Todo({ title, description }).save();
+
+        return res.status(200).end();
+    }catch(err){
+        console.log(err);
+        
+        return res.status(500).end();
+    }
+    
+
+}
+
 module.exports = {
-    todos
+    todos,
+    createTodo
 }
