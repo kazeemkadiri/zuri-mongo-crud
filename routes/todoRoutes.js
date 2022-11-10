@@ -10,5 +10,7 @@ router.post('/create', controller.createTodo);
 
 router.patch('/update/:id', controller.updateTodo);
 
+router.delete('/delete/:id', controller.deleteTodo);
+
 module.exports = router;
 
