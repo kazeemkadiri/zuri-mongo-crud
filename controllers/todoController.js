@@ -66,15 +66,22 @@ const updateTodo = async (req, res) => {
 }
 
 const deleteTodo = async (req, res) => {
-    const { id } = req.params.id;
+    const { id } = req.params;
 
-    const response = await Todo.findByIdAndDelete(id);
+    try{
+        const response = await Todo.findByIdAndDelete(id);
 
-    if(!response){
+        if(!response){
+            return res.status(500).end();
+        }
+
+        return res.status(200).end();
+    }catch(err){
+
         return res.status(500).end();
+        
     }
-
-    return res.status(200).end();
+    
 }
 
 module.exports = {

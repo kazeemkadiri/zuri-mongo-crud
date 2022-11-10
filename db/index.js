@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 
+const MONGODB_LOCAL_URI = "mongodb://localhost:27017/tododb";
+
 const connectDB = () => {
-    mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true}, (err) => {
+    mongoose.connect(process.env.MONGODB_URI || MONGODB_LOCAL_URI, {useNewUrlParser: true}, (err) => {
         if(err){
             console.log(err);
     
