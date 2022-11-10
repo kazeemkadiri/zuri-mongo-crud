@@ -8,5 +8,7 @@ router.get('/', controller.todos);
 
 router.post('/create', controller.createTodo);
 
+router.patch('/update/:id', controller.updateTodo);
+
 module.exports = router;
 
